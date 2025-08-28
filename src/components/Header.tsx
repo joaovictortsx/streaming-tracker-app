@@ -13,14 +13,17 @@ export const Header = ({ auth }: Props) => {
         const mobileMenu = document.querySelector('#mobileMenu');
 
         if (mobileMenu && toggle) {
-            mobileMenu.classList.remove('mr-[-1000px]')
+            mobileMenu.classList.remove('mt-[-700px]')
+            mobileMenu.classList.add('mt-[550px]')
         } else {
-            mobileMenu?.classList.add('mr-[-1000px]')
+            mobileMenu?.classList.remove('mt-[550px]')
+            mobileMenu?.classList.add('mt-[-700px]')
+            
         }
     }
 
     return (
-        <header className="h-[80px] flex items-center justify-between overflow-x-hidden">
+        <header className="h-[80px] flex items-center justify-between">
             <div className="container flex justify-between items-center px-2 mx-auto lg:justify-normal">
                 <div className="flex items-center justify-start w-[70%] h-[80px] lg:w-[33%]">
                     <div className="w-10 h-10 rounded-full mt-1 mr-1"><img src={logoImg.src} /></div>
@@ -31,7 +34,7 @@ export const Header = ({ auth }: Props) => {
                     {/* Mobile menu */}
                     <button onClick={() => toggleMobileMenu(true)} className="rotate-90 cursor-pointer font-bold text-xl lg:hidden">|||</button>
 
-                    <div id="mobileMenu" className="p-2 absolute w-[400px] h-[600px] mt-[550px] mr-[-1000px] bg-white rounded-lg shadow-lg duration-1000 ease-in-out lg:hidden">
+                    <div id="mobileMenu" className="p-2 absolute w-[400px] mt-[-700px] h-[600px] bg-white rounded-lg shadow-lg duration-1000 ease-in-out lg:hidden">
                         <div className="flex justify-between h-[40px]">
                             <img
                                 src={logoImg2.src} />
@@ -39,10 +42,10 @@ export const Header = ({ auth }: Props) => {
                         </div>
                         <nav className="mt-[15px]">
                             <ul className="list-none flex flex-col items-start">
-                                <a href="./home"><li className="border-b-2 border-transparent text-xl">Home</li></a>
-                                <a href=""><li className="border-b-2 border-transparent text-xl">News</li></a>
-                                <a href=""><li className="border-b-2 border-transparent text-xl">Trendings</li></a>
-                                <a href=""><li className="border-b-2 border-transparent text-xl">My lists</li></a>
+                                <a href="./home"><li className="text-xl">Home</li></a>
+                                <a href=""><li className="text-xl mt-2">News</li></a>
+                                <a href=""><li className="text-xl mt-2">Trendings</li></a>
+                                <a href=""><li className="text-xl mt-2">My lists</li></a>
                             </ul>
                         </nav>
                     </div>
