@@ -27,13 +27,13 @@ export const List = () => {
                         </div>
                         <div className="w-full flex justify-center lg:justify-start md:justify-start">
                             {toggleList === 'favorite' &&
-                                <Card/>
+                               <div></div>
                             }
                             {toggleList === 'seeLater' &&
-                                <Card/>
+                               <div></div>
                             }
                             {toggleList === 'watched' &&
-                                <Card/>
+                               <div></div>
                             }
                         </div>
                     </div>
