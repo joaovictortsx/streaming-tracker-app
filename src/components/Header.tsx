@@ -18,7 +18,7 @@ export const Header = ({ auth }: Props) => {
         } else {
             mobileMenu?.classList.remove('mt-[550px]')
             mobileMenu?.classList.add('mt-[-700px]')
-            
+
         }
     }
 
@@ -32,20 +32,29 @@ export const Header = ({ auth }: Props) => {
                 <div className="w-[30%] h-[80px] flex items-center justify-end lg:justify-center lg:w-[33%]">
 
                     {/* Mobile menu */}
-                    <button onClick={() => toggleMobileMenu(true)} className="rotate-90 cursor-pointer font-bold text-xl lg:hidden">|||</button>
+                    <button onClick={() => toggleMobileMenu(true)} className="cursor-pointer text-xl lg:hidden">
+                        <svg className="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
+                        </svg>
+                    </button>
 
-                    <div id="mobileMenu" className="p-2 absolute w-[400px] mt-[-700px] h-[600px] bg-white rounded-lg shadow-lg duration-1000 ease-in-out lg:hidden">
+                    <div id="mobileMenu" className="p-2 absolute w-[400px] max-w-[calc(100vw-20px)] mt-[-700px] h-[600px] bg-white rounded-lg shadow-lg duration-1000 ease-in-out lg:hidden">
                         <div className="flex justify-between h-[40px]">
                             <img
+                                className="w-10 h-10"
                                 src={logoImg2.src} />
-                            <button onClick={() => toggleMobileMenu(false)} className="rotate-90 cursor-pointer font-bold text-2xl">|||</button>
+                            <button onClick={() => toggleMobileMenu(false)} className="cursor-pointer text-2xl">
+                                <svg className="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                            </button>
                         </div>
                         <nav className="mt-[15px]">
                             <ul className="list-none flex flex-col items-start">
-                                <a href="./home"><li className="text-xl">Home</li></a>
-                                <a href=""><li className="text-xl mt-2">News</li></a>
-                                <a href=""><li className="text-xl mt-2">Trendings</li></a>
-                                <a href=""><li className="text-xl mt-2">My lists</li></a>
+                                <a href="./"><li className="text-xl">Home</li></a>
+                                <a href="./new"><li className="text-xl mt-2">News</li></a>
+                                <a href="./trending"><li className="text-xl mt-2">Trendings</li></a>
+                                <a href="./list"><li className="text-xl mt-2">My lists</li></a>
                             </ul>
                         </nav>
                     </div>
@@ -53,10 +62,10 @@ export const Header = ({ auth }: Props) => {
                     {/* Desktop menu */}
                     <nav className="hidden lg:flex">
                         <ul className="list-none flex justify-between w-[300px]">
-                            <a href="./home"><li className="border-b-2 border-transparent text-lg hover:border-primary">Home</li></a>
-                            <a href=""><li className="border-b-2 border-transparent text-lg hover:border-primary">News</li></a>
-                            <a href=""><li className="border-b-2 border-transparent text-lg hover:border-primary">Trendings</li></a>
-                            <a href=""><li className="border-b-2 border-transparent text-lg hover:border-primary">My lists</li></a>
+                            <a href="./"><li className="border-b-2 border-transparent text-lg hover:border-primary">Home</li></a>
+                            <a href="./new"><li className="border-b-2 border-transparent text-lg hover:border-primary">News</li></a>
+                            <a href="./trending"><li className="border-b-2 border-transparent text-lg hover:border-primary">Trendings</li></a>
+                            <a href="./list"><li className="border-b-2 border-transparent text-lg hover:border-primary">My lists</li></a>
                         </ul>
                     </nav>
                 </div>
