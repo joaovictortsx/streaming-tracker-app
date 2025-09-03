@@ -46,16 +46,22 @@ export const Home = ({ auth }: Props) => {
                     <div className="p-2 flex justify-center w-full">
                         <div className="flex w-full flex-col">
                             <div className="h-[60px] mt-[15px] w-full flex flex-col justify-center items-center">
-                                <input 
+                                <input
                                     className="border-2 bg-white border-primary text-black w-[350px] px-2 outline-0 h-[40px] rounded-lg"
                                     onChange={(e) => setSearchInput(e.target.value)}
                                     value={searchInput}
-                                    type="search" name="" id="" placeholder="Search..."/>
+                                    type="search" name="" id="" placeholder="Search..." />
                             </div>
                             <div className="w-full flex flex-col lg:gap-5 lg:flex-wrap lg:flex-row md:flex-wrap md:flex-row md:gap-5 sm:items-center sm:gap-5 sm:flex-col">
-                                {animeData.slice(0,24).map((data) => (
-                                    <Card key={data.mal_id} data={data}/>
-                                ))
+                                {animeData.length === 0 &&
+                                    <div className="w-full flex items-center justify-center h-[500px] bg-white rounded-lg shadow-xl">
+                                        <p className="font-bold textlg">No results found {':('}</p>
+                                    </div>
+                                }
+                                {animeData.length > 0 &&
+                                    animeData.slice(0, 24).map((data) => (
+                                        <Card key={data.mal_id} data={data} />
+                                    ))
                                 }
                             </div>
                         </div>
