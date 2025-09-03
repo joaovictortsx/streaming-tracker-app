@@ -1,10 +1,10 @@
 'use client'
-import { Home } from "@/components/Home"
+import { Info } from "@/components/Info";
 
 const Page = () => {
     return (
         <div className="flex items-center justify-center font-roboto bg-dark-white">
-            <Home auth={true} />
+            <Info />
         </div>
     )
 }

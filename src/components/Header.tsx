@@ -9,7 +9,7 @@ type Props = {
 
 export const Header = ({ auth }: Props) => {
 
-    const toggleMobileMenu = (toggle: boolean) => {
+    const handleToggleMenu = (toggle: boolean) => {
         const mobileMenu = document.querySelector('#mobileMenu');
 
         if (mobileMenu && toggle) {
@@ -32,7 +32,7 @@ export const Header = ({ auth }: Props) => {
                 <div className="w-[30%] h-[80px] flex items-center justify-end lg:justify-center lg:w-[33%]">
 
                     {/* Mobile menu */}
-                    <button onClick={() => toggleMobileMenu(true)} className="cursor-pointer text-xl lg:hidden">
+                    <button onClick={() => handleToggleMenu(true)} className="cursor-pointer text-xl lg:hidden">
                         <svg className="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
                         </svg>
@@ -43,7 +43,7 @@ export const Header = ({ auth }: Props) => {
                             <img
                                 className="w-10 h-10"
                                 src={logoImg2.src} />
-                            <button onClick={() => toggleMobileMenu(false)} className="cursor-pointer text-2xl">
+                            <button onClick={() => handleToggleMenu(false)} className="cursor-pointer text-2xl">
                                 <svg className="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
                                 </svg>

@@ -1,6 +1,7 @@
 export type Anime = {
     mal_id: number
     title: string
+    title_english: string
     aired: {
         string: string
     }
@@ -39,4 +40,11 @@ export type Anime = {
             name: string
         }
     ]
+    score: number
+    scored_by: number
+    rank: number
+    type: string
+    trailer: {
+        embed_url: string
+    }
 }
