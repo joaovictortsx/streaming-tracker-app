@@ -8,7 +8,7 @@ https://streaming-tracker-app.vercel.app/
 - Lista de Favoritos: Destaque as séries que você mais ama.
 - Lista de Assistidos: Registre tudo o que você já viu.
 - Lista “Ver Depois”: Salve aquelas séries que você não quer esquecer de assistir.
-- Pesquisar por nome ou gênero.
+- Pesquisar por nome
 - Lista com novidades da temporada.
 - Lista com novidades da temporada mais bem avaliados.
 - Catálogo somente de animes (por enquanto).
