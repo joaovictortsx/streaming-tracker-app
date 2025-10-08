@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors'
 import { PrismaClient } from './src/generated/prisma/index.js'
 
 
@@ -10,6 +11,13 @@ const app = express();
 app.use(express.json());
 app.listen(3000)
 
+//cors config
+const corsOptions = {
+    origin: 'http://localhost:3001',
+    credentials: true,
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 
 // Rota para adicionar novo item a lista
 app.post('/add', async (req, res) => {

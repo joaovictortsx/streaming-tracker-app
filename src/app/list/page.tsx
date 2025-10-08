@@ -1,12 +1,15 @@
 'use client'
 
 import { List } from "@/components/List";
+import { ListContextProvider } from "@/contexts/ListContext";
 
 const Page = () => {
     return (
-        <div className="h-auto flex items-center justify-center font-roboto bg-dark-white">
-            <List />
-        </div>
+        <ListContextProvider>
+            <div className="h-auto flex items-center justify-center font-roboto bg-dark-white">
+                <List />
+            </div>
+        </ListContextProvider>
     )
 }
 

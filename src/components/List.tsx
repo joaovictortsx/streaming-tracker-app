@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Header } from "./Header";
 import { Card } from "./Card";
+import { ListContext } from "@/contexts/ListContext";
 
 export const List = () => {
+
+    //pegando dados do context
+    const listCtx = useContext(ListContext);
+
 
     {/* State para alterar a aba de listas */ }
     const [toggleList, setToggleList] = useState<string>('favorite');
@@ -29,7 +34,9 @@ export const List = () => {
                         <div className="w-full flex justify-center lg:justify-start md:justify-start">
                             {/* Verificando qual lista foi clicada */}
                             {toggleList === 'favorite' &&
-                                <div></div>
+                                listCtx?.favoriteData.map(item => (
+                                    <div key={item.mal_id}>{item.title}</div>
+                                ))
                             }
                             {toggleList === 'seeLater' &&
                                 <div></div>

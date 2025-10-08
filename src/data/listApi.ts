@@ -7,7 +7,7 @@ const url = axios.create({
 })
 
 
-const getFavorites = async (): Promise<List[]> => {
+export const getFavorites = async (): Promise<List[]> => {
     const res = await url.get<List[]>('/favorites');
     return res.data;
 }
