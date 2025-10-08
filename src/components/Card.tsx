@@ -34,7 +34,7 @@ export const Card = ({ data }: Props) => {
                     <p className="bg-dark-white rounded-lg hover:underline cursor-pointer text-secondary">{data.genres.length > 2 ? <a>{data.genres[2].name}</a> : '--'}</p>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-start h-[350px] md:h-[350px] lg:h-[330px]">
+            <div className="flex w-full justify-center items-start h-[330px] md:h-[350px] lg:h-[330px]">
                 <div className="mt-[15px] w-[50%] overflow-hidden rounded-lg">
                     <a href={`/info?id=${data.mal_id}`}>
                         <img
