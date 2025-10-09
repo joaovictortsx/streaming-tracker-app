@@ -35,6 +35,11 @@ app.post('/add', async (req, res) => {
     res.status(201).json(req.body);
 })
 
+app.get('/allList', async (req, res) => {
+    const allList = await prisma.list.findMany()
+    res.status(201).json.apply(allList);
+})
+
 
 // Inicio Rotas "Favorites" ----------------------------
 // Rota para pegar favoritos da lista

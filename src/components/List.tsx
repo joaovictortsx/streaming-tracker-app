@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Header } from "./Header";
 import { Card } from "./Card";
 import { ListContext } from "@/contexts/ListContext";
+import { ListCard } from "./ListCard";
 
 export const List = () => {
 
@@ -22,7 +23,7 @@ export const List = () => {
                             <div className="w-1 h-6 bg-primary m-1"></div>
                             <h1 className="text-xl font-bold">My Lists</h1>
                         </div>
-                        <div className="bg-white flex justify-center items-center w-full h-[80px] rounded-lg">
+                        <div className="bg-white flex justify-center items-center w-full h-[80px] rounded-lg shadow-lg">
                             <nav className="w-[320px]">
                                 <ul className="flex justify-between text-lg">
                                     <a onClick={() => setToggleList('favorite')} className="border-b-2 border-transparent text-lg hover:border-primary cursor-pointer"><li>Favorites</li></a>
@@ -35,14 +36,18 @@ export const List = () => {
                             {/* Verificando qual lista foi clicada */}
                             {toggleList === 'favorite' &&
                                 listCtx?.favoriteData.map(item => (
-                                    <div key={item.mal_id}>{item.title}</div>
+                                    <ListCard key={item.mal_id} data={item} />
                                 ))
                             }
                             {toggleList === 'seeLater' &&
-                                <div></div>
+                                listCtx?.seeLaterData.map(item => (
+                                    <ListCard key={item.mal_id} data={item} />
+                                ))
                             }
                             {toggleList === 'watched' &&
-                                <div></div>
+                                listCtx?.watchedData.map(item => (
+                                    <ListCard key={item.mal_id} data={item} />
+                                ))
                             }
                         </div>
                     </div>
