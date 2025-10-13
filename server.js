@@ -23,21 +23,21 @@ app.use(cors(corsOptions))
 app.post('/add', async (req, res) => {
     await prisma.list.create({
         data: {
-            mal_id: req.body.malId,
+            mal_id: req.body.mal_id,
             title: req.body.title,
             image: req.body.image,
             favorite: req.body.favorite,
             watched: req.body.watched,
-            see_later: req.body.seeLater
+            see_later: req.body.see_later
         }
-    });
+    })
 
     res.status(201).json(req.body);
 })
 
 app.get('/allList', async (req, res) => {
     const allList = await prisma.list.findMany()
-    res.status(201).json.apply(allList);
+    res.status(201).json(allList);
 })
 
 
@@ -49,7 +49,7 @@ app.get('/favorites', async (req, res) => {
             favorite: true
         }
     });
-    res.status(201).json(favorites);
+    res.status(200).json(favorites);
 })
 
 
@@ -57,7 +57,7 @@ app.get('/favorites', async (req, res) => {
 app.put('/favorite/:id', async (req, res) => {
     await prisma.list.update({
         where: {
-            mal_id: req.body.malId
+            id: req.params.id
         },
         data: {
             favorite: req.body.favorite
@@ -84,7 +84,7 @@ app.get('/watcheds', async (req, res) => {
 app.put('/watched/:id', async (req, res) => {
     await prisma.list.update({
         where: {
-            mal_id: req.body.malId
+            id: req.params.id
         },
         data: {
             watched: req.body.watched
@@ -110,10 +110,10 @@ app.get('/seeLater', async (req, res) => {
 app.put('/seeLater/:id', async (req, res) => {
     await prisma.list.update({
         where: {
-            mal_id: req.body.malId
+            id: req.params.id
         },
         data: {
-            see_later: req.body.seeLater
+            see_later: req.body.see_later
         }
     })
 })

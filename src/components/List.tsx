@@ -32,7 +32,7 @@ export const List = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <div className="w-full flex justify-center lg:justify-start md:justify-start">
+                        <div className="w-full flex flex-col justify-center lg:justify-start md:justify-start">
                             {/* Verificando qual lista foi clicada */}
                             {toggleList === 'favorite' &&
                                 listCtx?.favoriteData.map(item => (

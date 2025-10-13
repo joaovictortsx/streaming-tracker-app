@@ -1,10 +1,23 @@
+import { ListContext } from "@/contexts/ListContext"
+import { getAll } from "@/data/listApi"
 import { Anime } from "@/types/Anime"
+import { List } from "@/types/List"
+import { useContext, useEffect, useState } from "react"
 
 type Props = {
-    data: Anime
+    data: Anime & List
 }
 
 export const Card = ({ data }: Props) => {
+
+    const listCtx = useContext(ListContext)
+    const [actionsData, setActionsData] = useState<List[]>([]);
+
+    useEffect(() => {
+        const getActionsData = getAll()
+        getActionsData.then((res) => setActionsData(res))
+    }, [actionsData])
+
     return (
         <div key={data.mal_id} className="flex w-full flex-col items-center mt-[15px] p-2 bg-white rounded-lg shadow-lg md:w-[48%] lg:w-[30%] hover:shadow-2xl hover:duration-500">
             <div className="h-[60px] w-[80%] flex text-center justify-center items-center text-black">
@@ -55,10 +68,42 @@ export const Card = ({ data }: Props) => {
                 </div>
             </div>
             <div className="w-full flex justify-around">
-                <button className="border-2 text-lg bg-primary text-white rounded-lg h-[45px] w-[110px] cursor-pointer hover:bg-primary/80">+ Favorite</button>
-                <button className="border-2 text-lg bg-black text-white rounded-lg h-[45px] w-[110px] cursor-pointer hover:bg-black/80">+ Watched</button>
-                <button className="border-2 text-lg bg-green-500 text-white rounded-lg h-[45px] w-[110px] cursor-pointer hover:bg-green-500/80">+ See later</button>
+
+                {//FAVORITE BTN ACTIONS
+                    actionsData.filter((item) => item.mal_id === data.mal_id).length < 1 &&
+                    <button onClick={() => listCtx?.handleBtnFavorite(data)} className="border-2 text-lg bg-primary text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-primary/80">Mark Favorite</button>
+                }
+                {//FAVORITE BTN ACTIONS
+                    actionsData.length > 0 &&
+                    actionsData.filter((item) => item.mal_id === data.mal_id).map((item) => (
+                        <button key={item.mal_id} onClick={() => listCtx?.handleBtnFavorite(item)} className="border-2 text-lg bg-primary text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-primary/80">{item.favorite == true ? 'Unmark Favorite' : 'Mark Favorite'}</button>
+                    ))
+                }
+
+
+                {//WATCHED BTN ACTIONS
+                    actionsData.filter((item) => item.mal_id === data.mal_id).length < 1 &&
+                    <button onClick={() => listCtx?.handleBtnWatched(data)} className="border-2 text-lg bg-black text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-black/80">Mark Watched</button>
+                }
+                {//WATCHED BTN ACTIONS
+                    actionsData.length > 0 &&
+                    actionsData.filter((item) => item.mal_id === data.mal_id).map((item) => (
+                        <button key={item.mal_id} onClick={() => listCtx?.handleBtnWatched(item)} className="border-2 text-lg bg-black text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-black/80">{item.watched == true ? 'Unmark Watched' : 'Mark Watched'}</button>
+                    ))
+                }
+
+
+                {//SEE LATER BTN ACTIONS
+                    actionsData.filter((item) => item.mal_id === data.mal_id).length < 1 &&
+                    <button onClick={() => listCtx?.handleBtnSeeLater(data)} className="border-2 text-lg bg-green-500 text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-green-500/80">Mark See Later</button>
+                }
+                {//SEE LATER BTN ACTIONS
+                    actionsData.length > 0 &&
+                    actionsData.filter((item) => item.mal_id === data.mal_id).map((item) => (
+                        <button key={item.mal_id} onClick={() => listCtx?.handleBtnSeeLater(item)} className="border-2 text-lg bg-green-500 text-white rounded-lg h-[60px] w-[150px] cursor-pointer hover:bg-green-500/80">{item.see_later == true ? 'Unmark See later' : 'Mark See later'}</button>
+                    ))
+                }
             </div>
-        </div>
+        </div >
     )
 }
