@@ -32,6 +32,7 @@ export const ListContextProvider = ({ children }: Props) => {
     //functions que manipulam marcar como favorite, watched, see later
     // favorite function
     const handleBtnFavorite = (data: List) => {
+        console.log('ijdaowsjdoia')
         const filterItem = allListData.filter((item) => item.mal_id == data.mal_id);
         if (filterItem.length > 0) {
             toggleFavorite(data)

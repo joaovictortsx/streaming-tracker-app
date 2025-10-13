@@ -14,7 +14,7 @@ export const ListCard = ({ data }: Props) => {
                 <h1>{data.title}</h1>
             </div>
             <div className="w-[20%]">
-                <a href="" className="border-2 text-lg bg-green-500 text-white rounded-lg px-3.5 py-1 cursor-pointer hover:bg-green-500/80">Details</a>
+                <a href={`/info?id=${data.mal_id}`} className="border-2 text-lg bg-green-500 text-white rounded-lg px-3.5 py-1 cursor-pointer hover:bg-green-500/80">Details</a>
                 <button className="border-2 text-lg bg-primary text-white rounded-lg px-2 mt-2 cursor-pointer hover:bg-primary/80">Remove</button>
             </div>
         </div>

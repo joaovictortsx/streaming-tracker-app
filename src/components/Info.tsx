@@ -3,6 +3,7 @@ import { Header } from "./Header"
 import { Anime } from "@/types/Anime"
 import { getSingleAnime } from "@/data/jikanApi"
 
+
 export const Info = () => {
 
     /* State que armazena os dados obtidos da requisição */
@@ -32,9 +33,6 @@ export const Info = () => {
         }
     }
 
-
-
-
     {/* Pegando id da url e fazendo requisição*/ }
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -52,26 +50,31 @@ export const Info = () => {
                 <Header auth={true} />
                 <div className="p-2 flex justify-center w-full">
                     <div className="flex flex-col w-full sm:w-[80%] md:w-[80%] lg:hidden">
-                        <div className="h-[80px] mt-[15px] w-full flex flex-col justify-center rounded-t-lg">
-                            {/* Verificando length do title e ajustando o tamanho do texto de acordo */}
-                            {animeData && animeData.title.length < 40 &&
-                                <>
-                                    <h1 className="text-xl font-bold text-primary">{animeData?.title}</h1>
-                                    <h1 className="text-lg text-secondary">{animeData?.title_english}</h1>
-                                </>
-                            }
-                            {animeData && animeData.title.length >= 40 && animeData.title.length < 70 &&
-                                <>
-                                    <h1 className="text-lg font-bold text-primary">{animeData?.title}</h1>
-                                    <h1 className="text-md text-secondary">{animeData?.title_english}</h1>
-                                </>
-                            }
-                            {animeData && animeData.title.length >= 70 &&
-                                <>
-                                    <h1 className="text-sm font-bold text-primary">{animeData?.title}</h1>
-                                    <h1 className="text-xs text-secondary">{animeData?.title_english}</h1>
-                                </>
-                            }
+                        <div className="h-[80px] mt-[15px] w-full flex justify-center rounded-t-lg">
+                            <div className="w-[80%] flex flex-col justify-center">
+                                {/* Verificando length do title e ajustando o tamanho do texto de acordo */}
+                                {animeData && animeData.title.length < 40 &&
+                                    <>
+                                        <h1 className="text-xl font-bold text-primary">{animeData?.title}</h1>
+                                        <h1 className="text-lg text-secondary">{animeData?.title_english}</h1>
+                                    </>
+                                }
+                                {animeData && animeData.title.length >= 40 && animeData.title.length < 70 &&
+                                    <>
+                                        <h1 className="text-lg font-bold text-primary">{animeData?.title}</h1>
+                                        <h1 className="text-md text-secondary">{animeData?.title_english}</h1>
+                                    </>
+                                }
+                                {animeData && animeData.title.length >= 70 &&
+                                    <>
+                                        <h1 className="text-sm font-bold text-primary">{animeData?.title}</h1>
+                                        <h1 className="text-xs text-secondary">{animeData?.title_english}</h1>
+                                    </>
+                                }
+                            </div>
+                            <div className="w-[20%] mt-4">
+                                <a href='' className="hover:underline font-bold">{'< voltar página'}</a>
+                            </div>
 
                         </div>
                         <div className="flex w-full bg-white shadow-xl rounded-t-lg p-2">
@@ -96,11 +99,6 @@ export const Info = () => {
                                     <p className="">Demographic: {animeData && animeData.demographics.length > 0 ? <a href="" className="text-secondary hover:underline">{animeData.demographics[0].name}</a> : '--'}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex justify-around items-center w-full h-[60px] rounded-b-lg bg-white">
-                            <button className="border-2 text-lg bg-primary text-white rounded-lg h-[45px] w-[110px]">+ Favorite</button>
-                            <button className="border-2 text-lg bg-black text-white rounded-lg h-[45px] w-[110px]">+ Watched</button>
-                            <button className="border-2 text-lg bg-green-500 text-white rounded-lg h-[45px] w-[110px]">+ See later</button>
                         </div>
                         <div id="synopsis" className="w-full h-[200px] p-2 text-black shadow-xl overflow-hidden bg-white duration-1000 ease-in-out rounded-b-lg">
                             <div id="content" className="h-[90%] overflow-y-hidden">
