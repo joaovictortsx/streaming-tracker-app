@@ -36,17 +36,17 @@ export const List = () => {
                             {/* Verificando qual lista foi clicada */}
                             {toggleList === 'favorite' &&
                                 listCtx?.favoriteData.map(item => (
-                                    <ListCard key={item.mal_id} data={item} />
+                                    <ListCard key={item.mal_id} list={'favorite'} data={item} />
                                 ))
                             }
                             {toggleList === 'seeLater' &&
                                 listCtx?.seeLaterData.map(item => (
-                                    <ListCard key={item.mal_id} data={item} />
+                                    <ListCard key={item.mal_id} list={'seeLater'} data={item} />
                                 ))
                             }
                             {toggleList === 'watched' &&
                                 listCtx?.watchedData.map(item => (
-                                    <ListCard key={item.mal_id} data={item} />
+                                    <ListCard key={item.mal_id} list={'watched'} data={item} />
                                 ))
                             }
                         </div>

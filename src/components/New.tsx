@@ -3,6 +3,7 @@ import { Card } from "./Card"
 import { Header } from "./Header"
 import { Anime } from "@/types/Anime"
 import { getNewSeasonAnimes } from "@/data/jikanApi"
+import { List } from "@/types/List"
 
 export const New = () => {
 

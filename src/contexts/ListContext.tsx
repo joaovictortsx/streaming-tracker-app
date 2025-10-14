@@ -11,6 +11,8 @@ type ListContextType = {
     watchedData: List[],
     seeLaterData: List[]
 
+    removeFromList: (l: string, data: List) => void;
+
     handleBtnFavorite: (d: List) => void;
     handleBtnWatched: (d: List) => void;
     handleBtnSeeLater: (d: List) => void;
@@ -28,6 +30,32 @@ export const ListContextProvider = ({ children }: Props) => {
     const [favoriteData, setFavoriteData] = useState<List[]>([]);
     const [watchedData, setWatchedData] = useState<List[]>([]);
     const [seeLaterData, setSeeLaterData] = useState<List[]>([]);
+
+
+    const removeFromList = (list: string, data: List) => {
+        switch (list) {
+            case 'favorite':
+                handleBtnFavorite(data)
+                toast.error(`${data.title} removido dos favoritos.`)
+                window.location.reload()
+                break;
+            case 'watched':
+                handleBtnWatched(data)
+                toast.error(`${data.title} removido dos assistidos.`)
+                window.location.reload()
+                break;
+            case 'seeLater':
+                handleBtnSeeLater(data)
+                toast.error(`${data.title} removido dos ver depois.`)
+                window.location.reload()
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
 
     //functions que manipulam marcar como favorite, watched, see later
     // favorite function
@@ -88,9 +116,6 @@ export const ListContextProvider = ({ children }: Props) => {
 
     useEffect(() => {
 
-        const getAllData = getAll();
-        getAllData.then((res) => setAllListData(res))
-
         const getFavoriteData = getFavorites();
         getFavoriteData.then((res) => setFavoriteData(res));
 
@@ -100,10 +125,13 @@ export const ListContextProvider = ({ children }: Props) => {
         const getSeeLaterData = getSeeLater();
         getSeeLaterData.then((res) => setSeeLaterData(res));
 
+        const getAllData = getAll();
+        getAllData.then((res) => setAllListData(res))
+
     }, [])
 
     return (
-        <ListContext.Provider value={{ allListData, favoriteData, watchedData, seeLaterData, handleBtnFavorite, handleBtnWatched, handleBtnSeeLater }}>
+        <ListContext.Provider value={{ allListData, favoriteData, watchedData, seeLaterData, removeFromList, handleBtnFavorite, handleBtnWatched, handleBtnSeeLater }}>
             {children}
         </ListContext.Provider>
     )

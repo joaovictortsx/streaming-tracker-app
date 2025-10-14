@@ -16,7 +16,7 @@ export const Card = ({ data }: Props) => {
     useEffect(() => {
         const getActionsData = getAll()
         getActionsData.then((res) => setActionsData(res))
-    }, [actionsData])
+    }, [])
 
     return (
         <div key={data.mal_id} className="flex w-full flex-col items-center mt-[15px] p-2 bg-white rounded-lg shadow-lg md:w-[48%] lg:w-[30%] hover:shadow-2xl hover:duration-500">
