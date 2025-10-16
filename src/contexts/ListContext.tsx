@@ -32,6 +32,8 @@ export const ListContextProvider = ({ children }: Props) => {
     const [seeLaterData, setSeeLaterData] = useState<List[]>([]);
 
 
+
+    // switch case para remover items da lista
     const removeFromList = (list: string, data: List) => {
         switch (list) {
             case 'favorite':

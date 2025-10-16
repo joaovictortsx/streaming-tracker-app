@@ -49,9 +49,9 @@ export const Info = () => {
             <div className="container mx-auto">
                 <Header auth={true} />
                 <div className="p-2 flex justify-center w-full">
-                    <div className="flex flex-col w-full sm:w-[80%] md:w-[80%] lg:hidden">
+                    <div className="flex flex-col w-full lg:hidden">
                         <div className="h-[80px] mt-[15px] w-full flex justify-center rounded-t-lg">
-                            <div className="w-[80%] flex flex-col justify-center">
+                            <div className="w-[75%] flex flex-col justify-center">
                                 {/* Verificando length do title e ajustando o tamanho do texto de acordo */}
                                 {animeData && animeData.title.length < 40 &&
                                     <>
@@ -72,7 +72,7 @@ export const Info = () => {
                                     </>
                                 }
                             </div>
-                            <div className="w-[20%] mt-4">
+                            <div className="w-[25%] mt-4">
                                 <a href='' className="hover:underline font-bold">{'< voltar página'}</a>
                             </div>
 
